@@ -22,7 +22,7 @@ class UpdateTestRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'test' => 'sometimes|integer',
+            'name' => 'sometimes|integer',
         ];
     }
 }

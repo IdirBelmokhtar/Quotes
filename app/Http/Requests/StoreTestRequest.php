@@ -11,7 +11,7 @@ class StoreTestRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true; // ** auth **//
     }
 
     /**
@@ -22,7 +22,7 @@ class StoreTestRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'test' => 'required|integer',
+            'name' => 'required|string',
         ];
     }
 }
