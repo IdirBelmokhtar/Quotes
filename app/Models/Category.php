@@ -28,4 +28,9 @@ class Category extends Model
         return $this->hasMany(Quote::class);
     }
 
+    public function categorible()
+    {
+        return $this->morphTo();
+    }
+
 }

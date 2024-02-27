@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreCategoryRequest extends FormRequest
 {
@@ -22,7 +23,11 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string',
+            'logo' => 'required|string',
+            'type' => ['required','string',Rule::in(['quote','theme'])],
+            'categorible_id' => 'required|numeric',
+            'categorible_type' => 'required|string',
         ];
     }
 }
