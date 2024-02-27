@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Requests;
-
+//use App\Http\Requests\AtLeastOneNotNull\AtLeastOneNotNull;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreQuoteRequest extends FormRequest
 {
@@ -22,7 +23,14 @@ class StoreQuoteRequest extends FormRequest
     public function rules(): array
     {
         return [
-                
+            //'desc_ar' => [new \App\Rules\AtLeastOneNotNull('desc_en')]|,
+            //'desc_en' => [new \App\Rules\AtLeastOneNotNull('desc_ar')],
+            'desc_ar' => 'sometimes|string|max:300',
+            'desc_en' => 'sometimes|string|max:300',
+            'source_ar' => 'sometimes|string|max:50',
+            'source_en' => 'sometimes|string|max:50',
+            'category_id' => 'required|integer|exists:categories,id',
+            'created_by' => 'sometimes|integer|exists:users,id'
         ];
     }
 }

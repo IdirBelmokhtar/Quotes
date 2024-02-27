@@ -22,7 +22,11 @@ class StoreThemeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'font_en'=>'required|string',
+            'font_ar'=>'required|string',
+            'image'=>'required|image',
+            'is_free'=>'required|boolean',
+            'category_id'=>'required|integer',
         ];
     }
 }
