@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCategoryRequest extends FormRequest
 {
@@ -22,7 +23,10 @@ class UpdateCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=>'sometimes|string|max:50',
+            'logo'=>'sometimes|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
+            'type'=>['sometimes'|'string'|Rule::in(['quote','theme'])],
+            'is_free'=>'sometimes|boolean'
         ];
     }
 }

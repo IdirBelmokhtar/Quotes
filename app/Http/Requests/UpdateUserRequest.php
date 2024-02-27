@@ -3,6 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+
+/*
+Validator::extend('dimensions_max', function ($attribute, $value, $parameters, $validator) {
+    list($width, $height) = getimagesize($value);
+    return $width <= $parameters[0] && $height <= $parameters[1];
+});
+*/
 
 class UpdateUserRequest extends FormRequest
 {
@@ -22,7 +31,14 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_name'=>'sometimes|string',
+            'email'=>'sometimes|email|unique:users,email',
+            'password'=>'sometimes|string|min : 8',
+            'birth_date'=>'sometimes|date_format : Y-m-d',
+            'nationality'=>'sometimes|string',
+            'gender'=>['sometimes', Rule::in(['man','woman'])],
+            'status'=>'sometimes|string', 
+            'type'=>'sometimes|string'
         ];
     }
 }

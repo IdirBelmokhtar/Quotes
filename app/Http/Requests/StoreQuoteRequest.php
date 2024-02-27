@@ -29,7 +29,6 @@ class StoreQuoteRequest extends FormRequest
             'desc_en' => 'sometimes|string|max:300',
             'source_ar' => 'sometimes|string|max:50',
             'source_en' => 'sometimes|string|max:50',
-            'category_id' => 'required|integer|exists:categories,id',
             'created_by' => 'sometimes|integer|exists:users,id'
         ];
     }

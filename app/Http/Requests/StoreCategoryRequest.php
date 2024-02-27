@@ -31,7 +31,8 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'name'=>'required|string|max:50',
-            'logo'=>'sometimes|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
+            'logo'=>'sometimes|image|mimes:jpg,jpeg,png,gif,svg',
+            'is_free'=>'sometimes|boolean',
             'type'=>['requird'|'string'|Rule::in(['quote','theme'])]
         ];
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+//use App\Http\Requests\AtLeastOneNotNull\AtLeastOneNotNull;
 
 class UpdateQuoteRequest extends FormRequest
 {
@@ -22,7 +23,13 @@ class UpdateQuoteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+             //'desc_ar' => [new \App\Rules\AtLeastOneNotNull('desc_en')]|,
+            //'desc_en' => [new \App\Rules\AtLeastOneNotNull('desc_ar')],
+            'desc_ar' => 'sometimes|string|max:300',
+            'desc_en' => 'sometimes|string|max:300',
+            'source_ar' => 'sometimes|string|max:50',
+            'source_en' => 'sometimes|string|max:50',
+            'created_by' => 'sometimes|integer|exists:users,id'
         ];
     }
 }

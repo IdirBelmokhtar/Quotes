@@ -22,7 +22,10 @@ class UpdateThemeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'font_en'=>'sometimes|string|max:50',
+            'font_ar'=>'sometimes|string|max:50',
+            'image'=>'sometimes|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
+            'is_free'=>'sometimes|boolean'
         ];
     }
 }
