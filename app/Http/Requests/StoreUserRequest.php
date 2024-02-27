@@ -24,8 +24,13 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'user_name'=>'required|string',
+            'email'=>'sometimes|email|unique:users,email',
+            'password'=>'sometimes|string|min : 8',
+            'birth_date'=>'sometimes|date_format : Y-m-d',
+            'nationality'=>'sometimes|string',
             'gender'=>['required', Rule::in(['man','woman'])],
-            'type'=>'required|string',
+            'status'=>'sometimes|string', 
+            'type'=>'required|string'
         ];
     }
 }
