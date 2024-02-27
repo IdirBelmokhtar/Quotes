@@ -3,6 +3,13 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+
+Validator::extend('dimensions_max', function ($attribute, $value, $parameters, $validator) {
+    list($width, $height) = getimagesize($value);
+    return $width <= $parameters[0] && $height <= $parameters[1];
+});
 
 class StoreCategoryRequest extends FormRequest
 {
@@ -11,18 +18,22 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+    
     public function rules(): array
     {
         return [
-            //
+            'name'=>'required|string|max:50',
+            'logo'=>'sometimes|image|mimes:jpg,jpeg,png,gif,svg|dimensions_max:250,100',
+            'type'=>'requird'|'string'|Rule::in(['quote','theme']),
+            'categorible_type'=>'required|string'|'in:App\Models\Quote,App\Models\Theme',
+            'categorible_id'=>'required|integer',
         ];
     }
 }

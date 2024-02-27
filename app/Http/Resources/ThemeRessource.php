@@ -14,6 +14,14 @@ class ThemeRessource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'font_en' => $this->font_en,
+            'font_ar' => $this->font_ar,
+            'image' => $this->image,
+            'is_free' => $this->is_free,
+            'category_id' => $this->category_id,
+            'created_by' => $this->created_by
+        ];
     }
 }
