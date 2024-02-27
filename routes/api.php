@@ -6,10 +6,6 @@ use App\Http\Controllers\Api\ThemeController;
 use App\Http\Controllers\Api\QuoteController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\UserController;
-use App\Models\Category;
-use App\Models\Quote;
-use App\Models\Theme;
-use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------

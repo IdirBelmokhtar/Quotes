@@ -5,7 +5,6 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-
 class StoreUserRequest extends FormRequest
 {
     /**
@@ -25,8 +24,8 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'user_name' => 'required|string',
-            'gender' => ['required|string',Rule::in(['male','female'])],
-            'type' => ['required|string',Rule::in(['client'])],
+            'gender' => ['required',Rule::in(['male','female'])],
+            'type' => ['required',Rule::in(['client'])],
         ];
     }
 }
