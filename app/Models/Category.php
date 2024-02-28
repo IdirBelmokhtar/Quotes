@@ -15,7 +15,7 @@ class Category extends Model
         'type',
         'categorible_type',
         'categorible_id',
-        'created_by'        
+        'category_id'
     ];
     public function quotes()
     {

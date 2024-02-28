@@ -21,11 +21,17 @@ return new class extends Migration
             $table->string('gender');
             $table->string('status')->nullable();
             $table->string('type');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('category')->cascadeOnDelete();
+            $table->unsignedBigInteger('theme_id')->nullable();
+            $table->foreign('theme_id')->references('id')->on('theme')->cascadeOnDelete();
             $table->timestamp('email_verified_at')->nullable();
+            
             $table->rememberToken();
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

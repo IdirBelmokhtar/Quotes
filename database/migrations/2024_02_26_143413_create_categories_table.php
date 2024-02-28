@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('logo');
             $table->boolean('is_free')->nullable();
             $table->string('type');
-            $table->morphs('categorible');
-            $table->integer('created_by')->nullable();
             $table->timestamps();
         });
     }

@@ -21,7 +21,6 @@ class ThemeRessource extends JsonResource
             'image' => $this->image,
             'is_free' => $this->is_free,
             'category_id' => $this->category_id,
-            'created_by' => $this->created_by
         ];
     }
 }

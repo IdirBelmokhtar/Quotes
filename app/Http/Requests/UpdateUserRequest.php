@@ -36,7 +36,7 @@ class UpdateUserRequest extends FormRequest
             'password'=>'sometimes|string|min : 8',
             'birth_date'=>'sometimes|date_format : Y-m-d',
             'nationality'=>'sometimes|string',
-            'gender'=>['sometimes', Rule::in(['man','woman'])],
+            'gender'=>['sometimes', Rule::in(['male','female'])],
             'status'=>'sometimes|string', 
             'type'=>'sometimes|string'
         ];

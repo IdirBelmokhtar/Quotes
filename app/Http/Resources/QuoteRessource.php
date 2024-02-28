@@ -21,7 +21,6 @@ class QuoteRessource extends JsonResource
             'source_ar' => $this->source_ar,
             'source_en' => $this->source_en,
             'caregory_id' => $this->caregory_id,
-            'created_by' => $this->created_by,
         ];
     }
 }
