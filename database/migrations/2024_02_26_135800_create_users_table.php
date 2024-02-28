@@ -24,7 +24,11 @@ return new class extends Migration
             $table->string('gender');
             $table->string('status')->nullable();
             $table->string('type');
+
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
+
+            $table->unsignedBigInteger('theme_id')->nullable();
             $table->foreign('theme_id')->references('id')->on('themes')->cascadeOnDelete();
 
             $table->rememberToken();

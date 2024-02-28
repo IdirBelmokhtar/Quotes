@@ -16,8 +16,11 @@ return new class extends Migration
             $table->string('font_ar');
             $table->string('font_en');
             $table->string('image');
-            $table->boolean('is_free');
+            $table->boolean('is_free')->default(1);
+
+            $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
