@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'nationality' => fake()->country(),
             'gender' => fake()->randomElement(['man','woman']),
             'status' => fake()->randomElement(['free','premium']),
-            'type' => fake()->randomElement(['admin','client']),
+            'type' => fake()->randomElement(['client']),
         ];
     }
 
