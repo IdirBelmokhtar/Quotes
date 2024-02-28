@@ -24,10 +24,9 @@ class UpdateThemeRequest extends FormRequest
         return [
             'font_ar' => 'sometimes|string',
             'font_en' => 'sometimes|string',
-            'image' => 'sometimes|string',
+            'image' => 'sometimes|image',
             'is_free' => 'sometimes|boolean',
             'category_id'=> 'sometimes|numeric|exists:categories,id',
-            'created_by' => 'sometimes|numeric|exists:users,id',
         ];
     }
 }

@@ -22,14 +22,11 @@ class UpdateQuoteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_name' => 'sometimes|string',
-            'email' => 'sometimes|string|email|unique:users,email',
-            'password' => 'sometimes|string|min:8',
-            'birth_date' => 'sometimes|string|date:Y-m-d',
-            'nationality'=> 'sometimes|string',
-            'gender' => 'sometimes',
-            'status' => 'sometimes|numeric',
-            'type' => 'sometimes|numeric',
+            'desc_ar' => 'sometimes|text',
+            'desc_en' => 'sometimes|text',
+            'source_ar' => 'sometimes|string',
+            'source_en' => 'sometimes|string',
+            'category_id'=> 'sometimes|numeric|exists:categories,id',
         ];
     }
 }

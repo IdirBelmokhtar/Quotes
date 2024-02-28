@@ -24,7 +24,7 @@ class StoreThemeRequest extends FormRequest
         return [
             'font_ar' => 'required|string',
             'font_en' => 'required|string',
-            'image' => 'required|string',
+            'image' => 'required|image',
             'is_free' => 'required|boolean',
             'category_id'=> 'required|numeric|exists:categories,id',
         ];

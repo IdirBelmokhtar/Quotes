@@ -30,6 +30,8 @@ class UpdateUserRequest extends FormRequest
             'nationality'=> 'sometimes|string',
             'gender' => ['sometimes|string',Rule::in(['male','female'])],
             'status' => ['sometimes|numeric',Rule::in(['free','premium'])],
+            'category_id' => 'sometimes|numeric|exists:categories,id',
+            'theme_id' => 'sometimes|numeric|exists:themes,id',
         ];
     }
 }

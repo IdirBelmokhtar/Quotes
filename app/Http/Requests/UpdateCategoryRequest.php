@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCategoryRequest extends FormRequest
 {
@@ -22,14 +23,10 @@ class UpdateCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_name' => 'sometimes|string',
-            'email' => 'sometimes|string|email|unique:users,email',
-            'password' => 'sometimes|string|min:8',
-            'birth_date' => 'sometimes|string|date:Y-m-d',
-            'nationality'=> 'sometimes|string',
-            'gender' => 'sometimes',
-            'status' => 'sometimes|numeric',
-            'type' => 'sometimes|numeric',
+            'name' => 'sometimes|string',
+            'logo' => 'sometimes|image',
+            'type' => ['sometimes','string',Rule::in(['quote','theme'])],
+            'is_free' => 'sometimes|boolean'
         ];
     }
 }

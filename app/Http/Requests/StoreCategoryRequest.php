@@ -24,10 +24,9 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'logo' => 'required|string',
+            'logo' => 'required|image',
             'type' => ['required','string',Rule::in(['quote','theme'])],
-            'categorible_id' => 'required|numeric',
-            'categorible_type' => 'required|string',
+            'is_free' => 'required|boolean'
         ];
     }
 }
