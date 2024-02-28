@@ -26,6 +26,8 @@ class User extends Authenticatable
         'gender',
         'status',
         'type',
+        'category_id',
+        'theme_id',
     ];
 
     /**
@@ -47,4 +49,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    public function theme()
+    {
+        return $this->belongsTo(Theme::class);
+    }
+
 }

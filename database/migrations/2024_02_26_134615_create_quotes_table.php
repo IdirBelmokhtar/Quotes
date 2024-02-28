@@ -17,8 +17,7 @@ return new class extends Migration
             $table->text('desc_en')->nullable();
             $table->string('source_ar')->nullable();
             $table->string('source_en')->nullable();
-            $table->integer('category_id');
-            $table->integer('created_by')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->timestamps();
         });
     }

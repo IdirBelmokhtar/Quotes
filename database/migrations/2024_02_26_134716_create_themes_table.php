@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('font_en');
             $table->string('image');
             $table->boolean('is_free');
-            $table->integer('category_id');
-            $table->integer('created_by')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->timestamps();
         });
     }

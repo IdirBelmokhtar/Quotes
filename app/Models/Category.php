@@ -14,9 +14,6 @@ class Category extends Model
         'logo',
         'is_free',
         'type',
-        'categorible_id',
-        'categorible_type',
-        'created_by',
     ];
 
     public function themes()
@@ -27,10 +24,4 @@ class Category extends Model
     {
         return $this->hasMany(Quote::class);
     }
-
-    public function categorible()
-    {
-        return $this->morphTo();
-    }
-
 }
