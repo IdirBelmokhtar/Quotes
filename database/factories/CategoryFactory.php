@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Factories;
+
 use App\Models\User;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,10 +22,7 @@ class CategoryFactory extends Factory
             "name" => fake()->name(),
             "logo" => fake()->image(),
             "is_free" => fake()->boolean(),
-            "type" => fake()->randomElement(['quote','theme']),
-            "categorible_type" => 'app\Models\Quote',
-            "categorible_id" => fake()->numberBetween(0, 99),
-            "created_by" => fake()->randomElement(User::pluck('id')),
+            "type" => fake()->randomElement(['quote', 'theme']),
         ];
     }
 }

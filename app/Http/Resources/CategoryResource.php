@@ -20,9 +20,14 @@ class CategoryResource extends JsonResource
             "logo" => $this->logo,
             "is_free" => $this->is_free,
             "type" => $this->type,
-            "categorible_type" => $this->categorible_type,
-            "categorible_id" => $this->categorible_id,
-            "created_by" => $this->created_by,
+            "themes" => ThemeResource::collection($this->themes),
+            "quotes" => QuoteResource::collection($this->quotes),
+
+
+
+            // "categorible_type" => $this->categorible_type,
+            // "categorible_id" => $this->categorible_id,
+            // "created_by" => $this->created_by,
         ];
     }
 }

@@ -15,6 +15,9 @@ class Quote extends Model
         "source_ar",
         "source_en",
         "category_id",
-        "created_by",
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class,"category_id");
+    }
 }

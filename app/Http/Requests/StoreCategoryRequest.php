@@ -26,9 +26,9 @@ class StoreCategoryRequest extends FormRequest
             'logo' => 'sometimes|string',
             'is_free' => 'sometimes|boolean',
             'type' => 'sometimes|string|in:quote,theme',
-            'categorible_type' => 'sometimes|nullable|string',
-            'categorible_id' => 'sometimes|nullable|numeric',
-            'created_by' => 'sometimes|nullable|numeric|exists:users,id',
+            // 'categorible_type' => 'sometimes|nullable|string',
+            // 'categorible_id' => 'sometimes|nullable|numeric',
+            // 'created_by' => 'sometimes|nullable|numeric|exists:users,id',
         ];
     }
 }

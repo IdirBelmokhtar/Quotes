@@ -23,7 +23,6 @@ class ThemeFactory extends Factory
             "image" => fake()->image(),
             "is_free" => fake()->boolean(),
             "category_id" => fake()->randomElement(Category::pluck('id')),
-            "created_by" => fake()->randomElement(User::pluck('id')),
         ];
     }
 }

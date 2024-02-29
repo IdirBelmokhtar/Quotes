@@ -17,12 +17,6 @@ return new class extends Migration
             $table->string('logo');
             $table->boolean('is_free')->nullable();
             $table->string('type');
-            $table->string('categorible_type');
-            $table->integer('categorible_id');
-   
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->foreign('created_by')->references('id')->on('users')->cascadeOnDelete();
-
             $table->timestamps();
         });
     }

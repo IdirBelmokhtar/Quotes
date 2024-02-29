@@ -14,6 +14,9 @@ class Theme extends Model
         "image",
         "is_free",
         "category_id",
-        "created_by",
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class,"category_id");
+    }
 }

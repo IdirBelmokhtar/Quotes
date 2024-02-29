@@ -14,8 +14,14 @@ class Category extends Model
         "logo",
         "is_free",
         "type",
-        "categorible_type",
-        "categorible_id",
-        "created_by",
     ];
+
+    public function themes(){
+        return $this->hasMany(Theme::class);
+    }
+
+    public function quotes(){
+        return $this->hasMany(Quote::class);
+    }
+
 }

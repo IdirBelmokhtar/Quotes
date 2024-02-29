@@ -27,7 +27,7 @@ class StoreQuoteRequest extends FormRequest
             'source_ar' => 'nullable|string|max:64|',
             'source_en' => 'nullable|string|max:64',
             'category_id' => 'required|numeric|exists:categories,id',
-            'created_by' => 'required|numeric|exists:users,id',
+            // 'created_by' => 'required|numeric|exists:users,id',
         ];
     }
 }

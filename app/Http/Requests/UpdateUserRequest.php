@@ -22,19 +22,22 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules(): array
     {        
-        $genders = ['man', 'woman'];
+        $genders = ['male', 'woman'];
         $status_ = ['free','premium'];
         $types = ['client'];
 
         return [
-            'user_name' => 'sometimes|string|max:64|min:3|unique:users',
-            'email' => 'nullable|string|max:64|unique:users',
+            'user_name' => 'sometimes|string|max:64|min:3',
+            'email' => 'nullable|string|email|max:64|unique:users',
             'password' => 'nullable|string|min:8',
-            'birth_date' =>'nullable|date',
+            'birth_date' =>'nullable|date',# |date:Y-m-d|  means Year-Month-Day  '1980-05-14'
             'nationality'=> 'nullable|string|max:64|min:3',
             'gender' => ['sometimes', Rule::in($genders)], // or 'gender' => 'required|string|in:man,woman', # -> static method
             'status' =>  ['sometimes', Rule::in($status_)],
-            
+            'type' =>  ['sometimes', Rule::in($types)],
+          
+            'category_id' => 'sometimes|numeric|exists:categories,id',
+            'theme_id' => 'sometimes|numeric|exists:themes,id',
         ];
     }
 }

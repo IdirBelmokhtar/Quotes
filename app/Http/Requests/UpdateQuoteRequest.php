@@ -27,7 +27,7 @@ class UpdateQuoteRequest extends FormRequest
             'source_ar' => 'sometimes|nullable|string|max:64|',
             'source_en' => 'sometimes|nullable|string|max:64',
             'category_id' => 'sometimes|numeric|exists:categories,id',
-            'created_by' => 'sometimes|numeric|exists:users,id',
+            // 'created_by' => 'sometimes|numeric|exists:users,id',
         ];
     }
 }

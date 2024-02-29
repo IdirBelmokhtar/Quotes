@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreUserRequest extends FormRequest
+class RegisterUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,21 +23,18 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         $genders = ['male', 'woman'];
-        $status_ = ['free'];
+        $status_ = ['premium'];
         $types = ['client'];
 
         return [
             'user_name' => 'required|string|max:64|min:3',
-            'email' => 'nullable|email|string|max:64|unique:users',
-            'password' => 'nullable|string|min:8',
-            'birth_date' =>'nullable|date', # |date:Y-m-d|  means Year-Month-Day  '1980-05-14'
-            'nationality'=> 'nullable|string|max:64|min:3',
+            'email' => 'required|string|email|max:64|unique:users',
+            'password' => 'required|string|confirmed|min:8', //  confirmed : field named 'password_confirmation' in the request data. (Postman)
+            'birth_date' => 'required|date',
+            'nationality' => 'required|string',
             'gender' => ['required', Rule::in($genders)], // or 'gender' => 'required|string|in:male,woman', # -> static method
-            'status' =>  ['required', Rule::in($status_)],,
+            'status' =>  ['required', Rule::in($status_)],
             'type' =>  ['required', Rule::in($types)],
-            
-            'category_id' => 'required|numeric|exists:categories,id',
-            'theme_id' => 'required|numeric|exists:themes,id',
         ];
     }
 }

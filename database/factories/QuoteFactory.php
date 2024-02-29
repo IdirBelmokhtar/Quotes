@@ -24,7 +24,6 @@ class QuoteFactory extends Factory
             "source_ar" => fake()->name(),
             "source_en" => fake()->name(),
             "category_id" => fake()->randomElement(Category::pluck('id')),
-            "created_by" => fake()->randomElement(User::pluck('id')),
         ];
     }
 }
