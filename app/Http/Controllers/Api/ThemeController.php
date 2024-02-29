@@ -14,7 +14,7 @@ class ThemeController extends Controller
 {
     public function index()
     {
-        return ThemeResource::collection(Theme::paginate(10));
+        return ThemeResource::collection(Theme::all());
     }
 
     public function store(StoreThemeRequest $request)
