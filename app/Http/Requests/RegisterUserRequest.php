@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateUserRequest extends FormRequest
+class RegisterUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +23,10 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'user_name' => 'sometimes|string',
-            'email' => 'sometimes|string|email|unique:users,email',
+            'email' => 'required|string|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
             'birth_date' => 'sometimes|string|date:Y-m-d',
             'nationality'=> 'sometimes|string',
-            'gender' => ['sometimes|string',Rule::in(['male','female'])],
-            'category_id' => 'sometimes|numeric|exists:categories,id',
-            'theme_id' => 'sometimes|numeric|exists:themes,id',
         ];
     }
 }

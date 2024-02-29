@@ -8,6 +8,7 @@ use App\Http\Requests\StoreQuoteRequest;
 use App\Http\Requests\UpdateQuoteRequest;
 use App\Http\Resources\QuoteResource;
 use Illuminate\Support\Facades\DB;
+use App\Models\Category;
 
 class QuoteController extends Controller
 {
@@ -20,6 +21,10 @@ class QuoteController extends Controller
     {
             DB::beginTransaction();
             $Quote = Quote::create($request->validated());
+            $Category= Category::findOrFail($Quote->category_id);
+            if($Category->type != 'quote'){
+                return response()->json(['category_id' => 'Unvalid category'], 200);
+            }
             DB::commit();
             return 'Quote is created';
     }
@@ -34,6 +39,10 @@ class QuoteController extends Controller
     {
             DB::beginTransaction();
             $Quote = Quote::findOrFail($id);
+            $Category= Category::findOrFail($Quote->category_id);
+            if($Category->type != 'quote'){
+                return response()->json(['category_id' => 'Unvalid category'], 200);
+            }
             $Quote->update(
                 $request->validated()
             );

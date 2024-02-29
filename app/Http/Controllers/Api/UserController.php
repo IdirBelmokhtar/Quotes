@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -20,8 +21,12 @@ class UserController extends Controller
     {
             DB::beginTransaction();
             $User = User::create($request->validated());
+            $Category= Category::findOrFail($User->category_id);
+            if($Category->type != 'quote'){
+                return response()->json(['category_id' => 'Unvalid category'], 200);
+            }
             DB::commit();
-            return 'User is created';
+            return new UserResource($User);
     }
 
     public function show($id)
@@ -34,6 +39,10 @@ class UserController extends Controller
     {
             DB::beginTransaction();
             $User = User::findOrFail($id);
+            $Category= Category::findOrFail($User->category_id);
+            if($Category->type != 'quote'){
+                return response()->json(['category_id' => 'Unvalid category'], 200);
+            }
             $User->update(
                 $request->validated()
             );

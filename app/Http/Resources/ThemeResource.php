@@ -20,7 +20,6 @@ class ThemeResource extends JsonResource
             'font_en'=> $this->font_en,
             'image' => $this->image,
             'is_free' => $this->is_free,
-            'category_id' => $this->category_id,
         ];
     }
 }

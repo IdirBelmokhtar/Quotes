@@ -8,6 +8,7 @@ use App\Http\Requests\StoreThemeRequest;
 use App\Http\Requests\UpdateThemeRequest;
 use App\Http\Resources\ThemeResource;
 use Illuminate\Support\Facades\DB;
+use App\Models\Category;
 
 class ThemeController extends Controller
 {
@@ -20,6 +21,10 @@ class ThemeController extends Controller
     {
             DB::beginTransaction();
             $Theme = Theme::create($request->validated());
+            $Category= Category::findOrFail($Theme->category_id);
+            if($Category->type != 'theme'){
+                return response()->json(['category_id' => 'Unvalid category'], 200);
+            }
             DB::commit();
             return 'Theme is created';
     }
@@ -34,6 +39,10 @@ class ThemeController extends Controller
     {
             DB::beginTransaction();
             $Theme = Theme::findOrFail($id);
+            $Category= Category::findOrFail($Theme->category_id);
+            if($Category->type != 'theme'){
+                return response()->json(['category_id' => 'Unvalid category'], 200);
+            }
             $Theme->update(
                 $request->validated()
             );
