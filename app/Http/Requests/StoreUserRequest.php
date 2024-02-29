@@ -30,7 +30,7 @@ class StoreUserRequest extends FormRequest
             'nationality'=>'sometimes|string',
             'gender'=>['required', Rule::in(['male','female'])],
             'status'=>['required', Rule::in(['free','premuim'])],
-            'type'=>['required', Rule::in(['admin','client'])]
+            'type'=>['required', Rule::in(['client'])]
         ];
     }
 }

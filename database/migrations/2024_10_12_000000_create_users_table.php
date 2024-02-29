@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 return new class extends Migration
 {
     /**
@@ -22,16 +24,26 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->string('type');
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('category')->cascadeOnDelete();
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->unsignedBigInteger('theme_id')->nullable();
-            $table->foreign('theme_id')->references('id')->on('theme')->cascadeOnDelete();
+            $table->foreign('theme_id')->references('id')->on('themes')->cascadeOnDelete();
             $table->timestamp('email_verified_at')->nullable();
             
             $table->rememberToken();
             $table->timestamps();
-        });
-    }
-    
+        }
+    );
+    User::create([
+        'user_name'=>'admin',
+        'email'=>'admin@gmail.com',
+        'password' => 'password',
+        'birth_date'=>'1999-10-10',
+        'nationality'=>'Japanese',
+        'gender'=>'male',
+        'status'=>'premuim',
+        'type'=>'admin'
+    ] );
+}
 
     /**
      * Reverse the migrations.

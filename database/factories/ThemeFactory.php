@@ -17,10 +17,8 @@ class ThemeFactory extends Factory
     public function definition(): array
     {
         return [
-
-            'id'=>fake()->randomElement(Theme::pluck('id')),
-            'font_ar'=>fake()->Faker::create('ar_AR')->sentence(),
-            'font_en'=>fake()->Faker::create('en_US')->sentence(),
+            'font_ar'=>fake()->sentence(),
+            'font_en'=>fake()->sentence(),
             'image'=>fake()->image(),
             'is_free'=>fake()->boolean(),
             'category_id'=>fake()->randomElement(Category::pluck('id'))

@@ -17,7 +17,6 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'id'=>now(),
             'name'=>fake()->name(),
             'logo'=>fake()->image(),
             'is_free'=>fake()->boolean(),

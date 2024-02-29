@@ -5,8 +5,9 @@ namespace Database\Factories;
 use App\Models\Quote;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-class QuotesFactory extends Factory
+class QuoteFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,13 +17,11 @@ class QuotesFactory extends Factory
     public function definition(): array
     {
         return [
-            'id'=>fake()->randomElement(Quote::pluck('id')),
-            'desc_ar'=>fake()->Faker::create('ar_AR')->sentence(),
-            'desc_en'=>fake()->Faker::create('en_US')->sentence(),
-            'source_ar'=>fake()->Faker::create('ar_AR')->sentence(),
-            'source_en'=>fake()->Faker::create('en_US')->sentence(),
+            'desc_ar' => Str::limit(fake()->sentence(), 300),
+            'desc_en' => Str::limit(fake()->sentence(), 300),
+            'source_ar' => Str::limit(fake()->sentence(), 300),
+            'source_en' => Str::limit(fake()->sentence(), 300), 
             'category_id'=>fake()->randomElement(Category::pluck('id')),
-
         ];
     }
 }

@@ -1,10 +1,10 @@
 <?php
-namespace App\Rules;
+namespace App\Http\Requests\AtLeastOneNotNull;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 
-class AtLeastOneNotNull implements Rule
+class AtLeastOneNotNull implements \Illuminate\Contracts\Validation\Rule
 {
     private $otherField;
 

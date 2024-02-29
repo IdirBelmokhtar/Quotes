@@ -15,10 +15,10 @@ class Quote extends Model
         'desc_en',
         'source_ar',
         'source_en',
-        'caregory_id',
-        'created_by',
+        'category_id',
+        
     ];
-    public function caregory()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }

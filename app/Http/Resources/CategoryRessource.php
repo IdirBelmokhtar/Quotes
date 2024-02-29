@@ -20,6 +20,8 @@ class CategoryRessource extends JsonResource
             "logo"=> $this->logo,
             "type"=> $this->type,
             "is_free"=> $this->is_free,
+            "quotes"=>QuoteRessource::collection($this->quotes)->toArray($request)
         ];
+
     }
 }

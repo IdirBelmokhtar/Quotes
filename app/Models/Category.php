@@ -13,8 +13,6 @@ class Category extends Model
         'logo',
         'is_free',
         'type',
-        'categorible_type',
-        'categorible_id',
         'category_id'
     ];
     public function quotes()

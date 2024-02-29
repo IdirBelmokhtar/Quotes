@@ -14,7 +14,6 @@ class Theme extends Model
         'image',
         'is_free',
         'category_id',
-        'created_by'        
     ];
     public function category()
     {

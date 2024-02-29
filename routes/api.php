@@ -41,14 +41,14 @@ Route::prefix('Categories')->group(function () {
     Route::put('/{id}', [CategoryController::class, 'update']);
     Route::delete('/{id}', [CategoryController::class, 'destroy']);
 });
-Route::prefix('tests')->group(function () {
+Route::prefix('Themes')->group(function () {
     Route::get('/', [ThemeController::class, 'index']);
     Route::post('/', [ThemeController::class, 'store']);
     Route::get('/{id}', [ThemeController::class, 'show']);
     Route::put('/{id}', [ThemeController::class, 'update']);
     Route::delete('/{id}', [ThemeController::class, 'destroy']);
 });
-Route::prefix('tests')->group(function () {
+Route::prefix('Quotes')->group(function () {
     Route::get('/', [QuoteController::class, 'index']);
     Route::post('/', [QuoteController::class, 'store']);
     Route::get('/{id}', [QuoteController::class, 'show']);

@@ -26,7 +26,6 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'id'=>fake()->randomElement(Theme::pluck('id')),
             'email'=>fake()->unique()->safeEmail(),
             'user_name'=>fake()->name(),
             'password'=> static::$password ??= Hash::make('password'),
@@ -34,7 +33,7 @@ class UserFactory extends Factory
             'nationality'=>fake()->country(),
             'gender'=>fake()->randomElement(['male','female']),
             'status'=>fake()->randomElement(['free','premuim']),
-            'type'=>fake()->randomElement(['client','admin']),
+            'type'=>fake()->randomElement(['client']),
             'category_id'=>fake()->randomElement(Category::pluck('id')),
             'theme_id'=>fake()->randomElement(Theme::pluck('id'))
         ];
