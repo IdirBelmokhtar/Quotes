@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('image');
             $table->boolean('is_free')->default(1);
 
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
 
             $table->timestamps();

@@ -16,10 +16,11 @@ class ThemeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'desc_ar' => $this->desc_ar,
-            'desc_en' => $this->desc_en,
-
-
+            'font_ar' => $this->font_ar,
+            'font_en'=> $this->font_en,
+            'image' => $this->image,
+            'is_free' => $this->is_free,
+            'category_id' => $this->category_id,
         ];
     }
 }

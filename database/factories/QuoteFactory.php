@@ -18,8 +18,8 @@ class QuoteFactory extends Factory
     public function definition(): array
     {
         return [
-            'desc_ar'=>fake()->Faker::create('ar_SA')->sentence(),
-            'desc_en' => fake()->Faker::create('en_US')->sentence(),
+            'desc_ar'=>fake()->sentence(),
+            'desc_en' => fake()->sentence(),
             'source_ar'=>fake()->name(),
             'source_en'=>fake()->name(),
             'category_id'=>fake()->randomElement(Category::pluck('id')),
