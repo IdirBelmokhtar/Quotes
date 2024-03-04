@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ThemeController;
@@ -24,7 +24,8 @@ use App\Models\Test;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::post('/reg', [AuthController::class, 'register']);
+    Route::post('/log', [AuthController::class, 'login']);
 });
 
 Route::prefix('users')->group(function () {
