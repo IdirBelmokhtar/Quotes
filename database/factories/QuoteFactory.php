@@ -22,7 +22,7 @@ class QuoteFactory extends Factory
             'desc_en' => fake()->sentence(),
             'source_ar'=>fake()->name(),
             'source_en'=>fake()->name(),
-            'category_id'=>fake()->randomElement(Category::pluck('id')),
+            'category_id'=>fake()->randomElement(Category::where('type', 'quote')->pluck('id')),
         ];
     }
 }

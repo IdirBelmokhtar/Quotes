@@ -22,7 +22,7 @@ class ThemeFactory extends Factory
             'font_en'=>fake()->word(),
             'image'=>fake()->image(),
             'is_free'=>fake()->boolean(),
-            'category_id'=>fake()->randomElement(Category::pluck('id')),
+            'category_id'=>fake()->randomElement(Category::where('type', 'theme')->pluck('id')),
         ];
     }
 }
