@@ -17,6 +17,11 @@ class CategoryController extends Controller
         return CategoryResource::collection(Category::all());
     }
 
+    public function index_by_type($type)
+    {
+        return CategoryResource::collection(Category::where('type', $type));
+    }
+
     public function store(StoreCategoryRequest $request)
     {
             DB::beginTransaction();

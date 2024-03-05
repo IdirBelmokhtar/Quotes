@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('font_ar');
             $table->string('font_en');
             $table->string('image');
-            $table->boolean('is_free')->default(1);
+            $table->boolean('is_free')->default(true);
 
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();

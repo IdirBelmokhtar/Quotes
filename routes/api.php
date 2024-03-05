@@ -47,6 +47,7 @@ Route::prefix('quotes')->group(function () {
 
 Route::prefix('categories')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);
+    Route::get('/{type}', [CategoryController::class, 'index_by_type']);
     Route::post('/', [CategoryController::class, 'store']);
     Route::get('/{id}', [CategoryController::class, 'show']);
     Route::put('/{id}', [CategoryController::class, 'update']);

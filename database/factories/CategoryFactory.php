@@ -19,7 +19,7 @@ class CategoryFactory extends Factory
         return [
             'name'=>fake()->word(),
             'logo'=>fake()->image(),
-            'is_free'=>fake()->boolean(),
+            'is_free'=>fake()->randomElement([true,false]),
             'type'=>fake()->randomElement(['quote', 'theme']),
         ];
     }
