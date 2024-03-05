@@ -8,6 +8,9 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Models\Category;
+use App\Models\Theme;
 class UserController extends Controller
 {
 
@@ -21,7 +24,30 @@ class UserController extends Controller
             DB::beginTransaction();
             $User = User::create($request->validated());
             DB::commit();
-            return 'User are created';
+            try{
+                $Category= Category::findOrFail($User->category_id);
+                    }catch(ModelNotFoundException $e){
+                    return response()->json([
+                        'error' => 'Category not found',
+                        'message' => 'Would you like to create a new category?'
+                    ], 404);
+                }
+            try{
+                    $Category= Category::findOrFail($User->category_id);
+                        }catch(ModelNotFoundException $e){
+                        return response()->json([
+                            'error' => 'Category not found',
+                            'message' => 'Would you like to create a new category?'
+                        ], 404);
+                }
+            if($Category->type != 'Qoute'){
+                return response()->json(['category_id' => 'Unvalid category'], 200);
+            }
+            if($Category->type != 'Theme'){
+                return response()->json(['category_id' => 'Unvalid category'], 200);
+            }
+            return new UserRessource($User);
+
     }
 
     public function show($id)
@@ -37,7 +63,30 @@ class UserController extends Controller
             $User->update(
                 $request->validated()
             );
+            try{
+                $Category= Category::findOrFail($User->category_id);
+                    }catch(ModelNotFoundException $e){
+                    return response()->json([
+                        'error' => 'Category not found',
+                        'message' => 'Would you like to create a new category?'
+                    ], 404);
+                }
+            try{
+                    $Category= Category::findOrFail($User->category_id);
+                        }catch(ModelNotFoundException $e){
+                        return response()->json([
+                            'error' => 'Category not found',
+                            'message' => 'Would you like to create a new category?'
+                        ], 404);
+                }
+            if($Category->type != 'Qoute'){
+                return response()->json(['category_id' => 'Unvalid category'], 200);
+            }
+            if($Category->type != 'Theme'){
+                return response()->json(['category_id' => 'Unvalid category'], 200);
+            }
             DB::commit();
+            
             return new UserRessource($User);
     }
 

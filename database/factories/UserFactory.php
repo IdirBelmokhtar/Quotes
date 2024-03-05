@@ -38,7 +38,6 @@ class UserFactory extends Factory
             'theme_id'=>fake()->randomElement(Theme::pluck('id'))
         ];
     }
-
     /**
      * Indicate that the model's email address should be unverified.
      */

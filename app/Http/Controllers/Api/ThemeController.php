@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 use App\Models\Theme;
+use App\Models\Category;
 use App\Http\Resources\ThemeRessource;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreThemeRequest;
 use App\Http\Requests\UpdateThemeRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+
 use Illuminate\Http\Requests;
 use Illuminate\Support\Facades\DB;
 class ThemeController extends Controller
@@ -21,7 +25,18 @@ class ThemeController extends Controller
             DB::beginTransaction();
             $Theme = Theme::create($request->validated());
             DB::commit();
-            return 'Theme are created';
+            try{
+                $Category= Category::findOrFail($Theme->category_id);
+                    }catch(ModelNotFoundException $e){
+                    return response()->json([
+                        'error' => 'Category not found',
+                        'message' => 'Would you like to create a new category?'
+                    ], 404);
+                }
+                if($Category->type != 'Qoute'){
+                    return response()->json(['category_id' => 'Unvalid category'], 200);
+                }
+                return new ThemeRessource($Theme);
     }
 
     public function show($id)
@@ -38,6 +53,17 @@ class ThemeController extends Controller
                 $request->validated()
             );
             DB::commit();
+            try{
+                $Category= Category::findOrFail($Theme->category_id);
+                    }catch(ModelNotFoundException $e){
+                    return response()->json([
+                        'error' => 'Category not found',
+                        'message' => 'Would you like to create a new category?'
+                    ], 404);
+                }
+                if($Category->type != 'Qoute'){
+                    return response()->json(['category_id' => 'Unvalid category'], 200);
+                }
             return new ThemeRessource($Theme);
     }
 

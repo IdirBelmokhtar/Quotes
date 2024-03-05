@@ -21,7 +21,7 @@ class CategoryController extends Controller
             DB::beginTransaction();
             $Category = Category::create($request->validated());
             DB::commit();
-            return 'Category are created';
+            return new CategoryRessource("$Category");
     }
 
     public function show($id)
