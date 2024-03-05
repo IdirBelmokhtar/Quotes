@@ -24,7 +24,6 @@ class ThemeController extends Controller
     {
             DB::beginTransaction();
             $Theme = Theme::create($request->validated());
-            DB::commit();
             try{
                 $Category= Category::findOrFail($Theme->category_id);
                     }catch(ModelNotFoundException $e){
@@ -36,6 +35,7 @@ class ThemeController extends Controller
                 if($Category->type != 'Qoute'){
                     return response()->json(['category_id' => 'Unvalid category'], 200);
                 }
+            DB::commit();
                 return new ThemeRessource($Theme);
     }
 
@@ -52,7 +52,6 @@ class ThemeController extends Controller
             $Theme->update(
                 $request->validated()
             );
-            DB::commit();
             try{
                 $Category= Category::findOrFail($Theme->category_id);
                     }catch(ModelNotFoundException $e){
@@ -64,6 +63,7 @@ class ThemeController extends Controller
                 if($Category->type != 'Qoute'){
                     return response()->json(['category_id' => 'Unvalid category'], 200);
                 }
+            DB::commit();
             return new ThemeRessource($Theme);
     }
 

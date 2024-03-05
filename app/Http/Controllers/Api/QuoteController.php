@@ -24,10 +24,12 @@ class QuoteController extends Controller
     {
             DB::beginTransaction();
             $Quote = Quote::create($request->validated());
-            DB::commit();
-            try{
-            $Category= Category::findOrFail($Quote->category_id);
-                }catch(ModelNotFoundException $e){
+            try {
+                $Category = Category::find($Quote->category_id);
+                if (!$Category) {
+                    throw new ModelNotFoundException('Category not found');
+                }
+            } catch (ModelNotFoundException $e) {
                 return response()->json([
                     'error' => 'Category not found',
                     'message' => 'Would you like to create a new category?'
@@ -36,6 +38,8 @@ class QuoteController extends Controller
             if($Category->type != 'Qoute'){
                 return response()->json(['category_id' => 'Unvalid category'], 200);
             }
+            DB::commit();
+
             return new QuoteRessource($Quote);
         }
 
@@ -52,18 +56,19 @@ class QuoteController extends Controller
             $Quote->update(
                 $request->validated()
             );
-            DB::commit();
             try{
                 $Category= Category::findOrFail($Quote->category_id);
-                    }catch(ModelNotFoundException $e){
+                }catch(ModelNotFoundException $e){
                     return response()->json([
                         'error' => 'Category not found',
                         'message' => 'Would you like to create a new category?'
                     ], 404);
-                }
-                if($Category->type != 'Qoute'){
+            }
+            if($Category->type != 'Qoute'){
                     return response()->json(['category_id' => 'Unvalid category'], 200);
-                }
+            }
+            DB::commit();
+
             return new QuoteRessource($Quote);
     }
 

@@ -23,7 +23,6 @@ class UserController extends Controller
     {
             DB::beginTransaction();
             $User = User::create($request->validated());
-            DB::commit();
             try{
                 $Category= Category::findOrFail($User->category_id);
                     }catch(ModelNotFoundException $e){
@@ -46,6 +45,7 @@ class UserController extends Controller
             if($Category->type != 'Theme'){
                 return response()->json(['category_id' => 'Unvalid category'], 200);
             }
+            DB::commit();
             return new UserRessource($User);
 
     }
