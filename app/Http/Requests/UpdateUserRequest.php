@@ -22,7 +22,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules(): array
     {        
-        $genders = ['male', 'woman'];
+        $genders = ['male', 'female'];
         $status_ = ['free','premium'];
         $types = ['client'];
 
@@ -32,7 +32,7 @@ class UpdateUserRequest extends FormRequest
             'password' => 'nullable|string|min:8',
             'birth_date' =>'nullable|date',# |date:Y-m-d|  means Year-Month-Day  '1980-05-14'
             'nationality'=> 'nullable|string|max:64|min:3',
-            'gender' => ['sometimes', Rule::in($genders)], // or 'gender' => 'required|string|in:man,woman', # -> static method
+            'gender' => ['sometimes', Rule::in($genders)], // or 'gender' => 'required|string|in:man,female', # -> static method
             'status' =>  ['sometimes', Rule::in($status_)],
             'type' =>  ['sometimes', Rule::in($types)],
           

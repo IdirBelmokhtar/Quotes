@@ -13,7 +13,7 @@ class QuoteController extends Controller
 {
     public function index()
     {
-        return QuoteResource::collection(Quote::paginate(10));
+        return QuoteResource::collection(Quote::all());
     }
 
     public function store(StoreQuoteRequest $request)

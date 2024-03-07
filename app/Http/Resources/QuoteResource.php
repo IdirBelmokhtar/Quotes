@@ -18,9 +18,9 @@ class QuoteResource extends JsonResource
             'id'  => $this->id,
             "desc_ar" => $this->desc_ar,
             "desc_en" => $this->desc_en,
-            "source_ar" => $this->suorce_ar,
+            "source_ar" => $this->source_ar,
             "source_en" => $this->source_en,
-            "category_id" => $this->category_id,
+            "category_id" => (int) $this->category_id,
             // "created_by" => $this->created_by,
         ];
     }

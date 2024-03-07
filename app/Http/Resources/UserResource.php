@@ -24,8 +24,8 @@ class UserResource extends JsonResource
             'gender' => $this->gender,
             'status' => $this->status,
             'type' => $this->type,
-            'category'=>   $this->category,
-            'theme' =>   $this->theme,
+            'category' => new CategoryResource($this->category),
+            'theme' => new ThemeResource($this->theme),
         ];
     }
 }

@@ -19,22 +19,32 @@ use App\Http\Controllers\ThemeController;
 |
 */
 
+Route::prefix('quotes')->group(function () {
+    Route::get('/', [QuoteController::class, 'index']);
+    Route::post('/', [QuoteController::class, 'store']);
+    Route::get('/{id}', [QuoteController::class, 'show']);
+    Route::put('/{id}', [QuoteController::class, 'update']);
+    Route::delete('/{id}', [QuoteController::class, 'destroy']);
+});
+
 Route::post('/register', [AuthController::class,'register']);
 Route::post('/login', [AuthController::class,'login']);
 
+
+Route::prefix('users')->group(function () {
+    Route::get('/', [UserController::class, 'index']);
+    Route::post('/', [UserController::class, 'store']);
+    Route::get('/{id}', [UserController::class, 'show']);
+    Route::put('/{id}', [UserController::class, 'update']);
+    Route::delete('/{id}', [UserController::class, 'destroy']);
+
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+});
+
 Route::middleware('auth:sanctum')->group(function () {
 
-    Route::prefix('users')->group(function () {
-        Route::get('/', [UserController::class, 'index']);
-        Route::post('/', [UserController::class, 'store']);
-        Route::get('/{id}', [UserController::class, 'show']);
-        Route::put('/{id}', [UserController::class, 'update']);
-        Route::delete('/{id}', [UserController::class, 'destroy']);
-
-        Route::post('/logout', [AuthController::class, 'logout']);
-
-    });
-
+    
 });
 
 Route::prefix('categories')->group(function () {
@@ -53,10 +63,3 @@ Route::prefix('themes')->group(function () {
     Route::delete('/{id}', [ThemeController::class, 'destroy']);
 });
 
-Route::prefix('quotes')->group(function () {
-    Route::get('/', [QuoteController::class, 'index']);
-    Route::post('/', [QuoteController::class, 'store']);
-    Route::get('/{id}', [QuoteController::class, 'show']);
-    Route::put('/{id}', [QuoteController::class, 'update']);
-    Route::delete('/{id}', [QuoteController::class, 'destroy']);
-});

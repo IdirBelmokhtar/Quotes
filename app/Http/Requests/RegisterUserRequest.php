@@ -22,7 +22,7 @@ class RegisterUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        $genders = ['male', 'woman'];
+        $genders = ['male', 'female'];
         $status_ = ['premium'];
         $types = ['client'];
 
@@ -32,7 +32,7 @@ class RegisterUserRequest extends FormRequest
             'password' => 'required|string|confirmed|min:8', //  confirmed : field named 'password_confirmation' in the request data. (Postman)
             'birth_date' => 'required|date',
             'nationality' => 'required|string',
-            'gender' => ['required', Rule::in($genders)], // or 'gender' => 'required|string|in:male,woman', # -> static method
+            'gender' => ['required', Rule::in($genders)], // or 'gender' => 'required|string|in:male,female', # -> static method
             'status' =>  ['required', Rule::in($status_)],
             'type' =>  ['required', Rule::in($types)],
         ];
