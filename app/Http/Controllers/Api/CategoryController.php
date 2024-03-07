@@ -14,13 +14,13 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return CategoryResource::collection(Category::all());
+        return CategoryResource::collection(Category::where('type', 'quote')->get());
     }
 
-    public function index_by_type($type)
-    {
-        return CategoryResource::collection(Category::where('type', $type));
-    }
+    // public function index_by_type($type)
+    // {
+    //     return CategoryResource::collection(Category::where('type', $type));
+    // }
 
     public function store(StoreCategoryRequest $request)
     {
