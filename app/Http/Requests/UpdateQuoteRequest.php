@@ -22,12 +22,20 @@ class UpdateQuoteRequest extends FormRequest
     public function rules(): array
     {
         return [
+<<<<<<< HEAD
             'desc_ar' => 'sometimes|nullable|string|max:255',
             'desc_en' => 'sometimes|nullable|string|max:255',
             'source_ar' => 'sometimes|nullable|string|max:64|',
             'source_en' => 'sometimes|nullable|string|max:64',
             'category_id' => 'sometimes|numeric|exists:categories,id',
             // 'created_by' => 'sometimes|numeric|exists:users,id',
+=======
+            'desc_ar' => 'sometimes|text',
+            'desc_en' => 'sometimes|text',
+            'source_ar' => 'sometimes|string',
+            'source_en' => 'sometimes|string',
+            'category_id'=> 'sometimes|numeric|exists:categories,id',
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
         ];
     }
 }

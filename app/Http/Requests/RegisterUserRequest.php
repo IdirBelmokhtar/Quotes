@@ -3,7 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+<<<<<<< HEAD
 use Illuminate\Validation\Rule;
+=======
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
 
 class RegisterUserRequest extends FormRequest
 {
@@ -22,6 +25,7 @@ class RegisterUserRequest extends FormRequest
      */
     public function rules(): array
     {
+<<<<<<< HEAD
         $genders = ['male', 'female'];
         $status_ = ['premium'];
         $types = ['client'];
@@ -35,6 +39,14 @@ class RegisterUserRequest extends FormRequest
             'gender' => ['required', Rule::in($genders)], // or 'gender' => 'required|string|in:male,female', # -> static method
             'status' =>  ['required', Rule::in($status_)],
             'type' =>  ['required', Rule::in($types)],
+=======
+        return [
+            'user_name' => 'sometimes|string',
+            'email' => 'required|string|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+            'birth_date' => 'sometimes|string|date:Y-m-d',
+            'nationality'=> 'sometimes|string',
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
         ];
     }
 }

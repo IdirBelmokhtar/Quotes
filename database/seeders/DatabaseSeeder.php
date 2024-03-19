@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
 
         # Vider las tables sans supprimer
         // User::truncate();
@@ -39,5 +40,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]); */
+=======
+        \App\Models\Category::factory(10)->create();
+        \App\Models\Theme::factory(10)->create();
+        \App\Models\User::factory(10)->create();
+        \App\Models\Quote::factory(50)->create();
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
     }
 }

@@ -22,11 +22,19 @@ class UpdateThemeRequest extends FormRequest
     public function rules(): array
     {
         return [
+<<<<<<< HEAD
             'font' => 'sometimes|string',
             'image' => 'sometimes|image|mimes:jpg,png,jpeg',
             'is_free' => 'sometimes|boolean',
             'category_id' => 'sometimes|numeric|exists:categories,id',
             // 'created_by' => 'sometimes|nullable|numeric|exists:users,id',
+=======
+            'font_ar' => 'sometimes|string',
+            'font_en' => 'sometimes|string',
+            'image' => 'sometimes|image',
+            'is_free' => 'sometimes|boolean',
+            'category_id'=> 'sometimes|numeric|exists:categories,id',
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
         ];
     }
 }

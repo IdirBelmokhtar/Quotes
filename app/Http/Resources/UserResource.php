@@ -18,7 +18,10 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'user_name' => $this->user_name,
             'email' => $this->email,
+<<<<<<< HEAD
             'password' => $this->password,
+=======
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
             'birth_date' => $this->birth_date,
             'nationality' => $this->nationality,
             'gender' => $this->gender,
@@ -26,6 +29,10 @@ class UserResource extends JsonResource
             'type' => $this->type,
             'category' => new CategoryResource($this->category),
             'theme' => new ThemeResource($this->theme),
+<<<<<<< HEAD
+=======
+
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
         ];
     }
 }

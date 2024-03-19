@@ -22,6 +22,7 @@ class StoreUserRequest extends FormRequest
      */
     public function rules(): array
     {
+<<<<<<< HEAD
         $genders = ['male', 'female'];
         $status_ = ['free'];
         $types = ['client'];
@@ -38,6 +39,14 @@ class StoreUserRequest extends FormRequest
             
             'category_id' => 'required|numeric|exists:categories,id',
             'theme_id' => 'required|numeric|exists:themes,id',
+=======
+        return [
+            'user_name' => 'required|string',
+            'gender' => ['required',Rule::in(['male','female'])],
+            'type' => ['required',Rule::in(['client'])],
+            'theme_id' => 'required|numeric|exists:themes,id',
+            'category_id' => 'required|numeric|exists:categories,id',
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
         ];
     }
 }

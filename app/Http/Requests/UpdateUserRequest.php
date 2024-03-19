@@ -21,6 +21,7 @@ class UpdateUserRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
+<<<<<<< HEAD
     {        
         $genders = ['male', 'female'];
         $status_ = ['free','premium'];
@@ -36,6 +37,15 @@ class UpdateUserRequest extends FormRequest
             'status' =>  ['sometimes', Rule::in($status_)],
             'type' =>  ['sometimes', Rule::in($types)],
           
+=======
+    {
+        return [
+            'user_name' => 'sometimes|string',
+            'email' => 'sometimes|string|email|unique:users,email',
+            'birth_date' => 'sometimes|string|date:Y-m-d',
+            'nationality'=> 'sometimes|string',
+            'gender' => ['sometimes|string',Rule::in(['male','female'])],
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
             'category_id' => 'sometimes|numeric|exists:categories,id',
             'theme_id' => 'sometimes|numeric|exists:themes,id',
         ];

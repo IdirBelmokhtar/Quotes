@@ -26,7 +26,10 @@ class User extends Authenticatable
         'gender',
         'status',
         'type',
+<<<<<<< HEAD
 
+=======
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
         'category_id',
         'theme_id',
     ];
@@ -55,9 +58,16 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Category::class);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
     public function theme()
     {
         return $this->belongsTo(Theme::class);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
 }

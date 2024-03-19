@@ -3,6 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+<<<<<<< HEAD
+=======
+use Illuminate\Validation\Rule;
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
 
 class UpdateCategoryRequest extends FormRequest
 {
@@ -22,6 +26,7 @@ class UpdateCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
+<<<<<<< HEAD
             'name' => 'required|string',
             'logo' => 'required|string',
             'is_free' => 'required|boolean',
@@ -29,6 +34,12 @@ class UpdateCategoryRequest extends FormRequest
             // 'categorible_type' => 'nullable|string',
             // 'categorible_id' => 'nullable|integer',
             // 'created_by' => 'nullable|integer|exists:users,id',
+=======
+            'name' => 'sometimes|string',
+            'logo' => 'sometimes|image',
+            'type' => ['sometimes','string',Rule::in(['quote','theme'])],
+            'is_free' => 'sometimes|boolean'
+>>>>>>> 71ab626ba6118b5e445a36f9b4e130b525f6ebcc
         ];
     }
 }
